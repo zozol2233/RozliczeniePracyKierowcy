@@ -29,7 +29,7 @@ namespace RozliczenieApp
             //Obliczanie wyniku
             decimal kwota = ObliczanieZarobkow.ObliczKwote(liczbaKursow, data.DayOfWeek);
 
-            //WYnik
+            //Wynik
             Wyniklbl.Text = $"Kwota: {kwota} zł";
         }
     }
