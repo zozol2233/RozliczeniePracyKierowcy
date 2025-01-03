@@ -1,0 +1,20 @@
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\RozliczenieApp.exe.config
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\RozliczenieApp.exe
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\RozliczenieApp.pdb
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\EntityFramework.dll
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\System.Data.SQLite.dll
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\EntityFramework.xml
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\bin\Debug\System.Data.SQLite.xml
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp v 2.0.csproj.AssemblyReference.cache
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp.Properties.Resources.resources
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp v 2.0.csproj.GenerateResource.cache
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp v 2.0.csproj.CoreCompileInputs.cache
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\Rozlicze.DCA43D6C.Up2Date
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp.exe
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp.pdb
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp.OknoRozlicz.resources
+C:\Users\sende\source\repos\RozliczenieApp v 2.0\RozliczenieApp\obj\Debug\RozliczenieApp.Form1.resources
