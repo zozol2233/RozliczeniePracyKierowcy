@@ -10,11 +10,14 @@ namespace RozliczenieApp
         [STAThread]
         static void Main()
         {
-           
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OknoLogin());
+
+            // Uruchamianie głównego formularza
+            Application.Run(new IntroForm());
         }
     }
+
 }
+    
+
