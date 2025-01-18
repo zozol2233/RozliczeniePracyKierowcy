@@ -1,78 +1,96 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using RozliczenieApp.Models;
 using RozliczenieApp.Data;
+using RozliczenieApp.Models;
 using RozliczenieApp.SalaryCalc;
 
 namespace RozliczenieApp
 {
     public partial class SalaryForm : Form
     {
-        private readonly DatabaseHelper _dbHelper;
-        private readonly Uzytkownik _zalogowanyUzytkownik;
+        private Uzytkownik _uzytkownik;
 
-        public SalaryForm(Uzytkownik zalogowanyUzytkownik)
+        public SalaryForm()
         {
             InitializeComponent();
-            _dbHelper = new DatabaseHelper();
-            _zalogowanyUzytkownik = zalogowanyUzytkownik;
-
-            WyswietlImieNazwisko();
-            ZaladujDane();
         }
 
-        private void WyswietlImieNazwisko()
+        public SalaryForm(Uzytkownik uzytkownik)
         {
-            if (_zalogowanyUzytkownik != null)
+            InitializeComponent();
+            _uzytkownik = uzytkownik;
+
+            // Pobierz dane kierowcy z bazy
+            var dbHelper = new DatabaseHelper();
+            var driver = dbHelper.GetDriverByUsername(_uzytkownik.Username);
+
+            if (driver != null)
             {
-                lblZalogowany.Text = $"Zalogowany: {_zalogowanyUzytkownik.FirstName} {_zalogowanyUzytkownik.LastName}";
+                DisplayUserData(driver);
+                DisplayCourses();
+            }
+            else
+            {
+                MessageBox.Show("Brak danych kierowcy w bazie.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void ZaladujDane()
+        private void DisplayUserData(Driver driver)
         {
-            var kursy = _dbHelper.GetKursy();
-            foreach (var kurs in kursy)
+            lblName.Text = $"Imię i nazwisko: {driver.FirstName} {driver.LastName}";
+            lblLicensePlate.Text = $"Numer rejestracyjny: {driver.LicensePlate}";
+            lblCarBrand.Text = $"Marka samochodu: {driver.CarType}";
+        }
+
+        private void DisplayCourses()
+        {
+            var dbHelper = new DatabaseHelper();
+            var courses = dbHelper.GetCoursesByDriverUsername(_uzytkownik.Username);
+
+            Kursy.Items.Clear(); // Wyczyść listę kursów przed dodaniem nowych
+
+            foreach (var course in courses)
             {
-                lstKursy.Items.Add($"Data: {kurs.Data.ToShortDateString()}, Opis: {kurs.Opis}, Liczba kursów: {kurs.LiczbaKursow}, Kwota: {kurs.Kwota} zł");
+                Kursy.Items.Add($"Data: {course.Data.ToShortDateString()}, Opis: {course.Opis}, Liczba kursów: {course.LiczbaKursow}, Kwota: {course.Kwota:C}");
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void btnDodajkurs_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Liczbabox.Text) || !int.TryParse(Liczbabox.Text, out int liczbaKursow))
+            var dbHelper = new DatabaseHelper();
+
+            // Pobierz dane z formularza
+            DateTime date = dateTimePicker1.Value;
+            string description = Opisbox.Text;
+
+            if (!int.TryParse(Liczbabox.Text, out int tripsCount))
             {
-                MessageBox.Show("Wprowadź poprawną liczbę kursów.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Proszę podać poprawną liczbę kursów.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(Opisbox.Text))
-            {
-                MessageBox.Show("Opis kursu nie może być pusty.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            // Automatyczne obliczanie kwoty
+            decimal amount = ObliczanieZarobkow.ObliczKwote(tripsCount, date.DayOfWeek);
 
-            DateTime data = dateTimePicker1.Value;
-            string opis = Opisbox.Text;
-            decimal kwota = ObliczanieZarobkow.ObliczKwote(liczbaKursow, data.DayOfWeek);
+            // Dodaj kurs do bazy danych
+            dbHelper.AddCourse(_uzytkownik.Username, date, description, tripsCount, amount);
 
-            Wyniklbl.Text = $"Kwota: {kwota} zł";
+            // Odśwież listę kursów
+            DisplayCourses();
 
-            var kurs = new Kurs
-            {
-                Data = data,
-                LiczbaKursow = liczbaKursow,
-                Opis = opis,
-                Kwota = kwota
-            };
-
-            _dbHelper.AddKurs(kurs.Data, kurs.Opis, kurs.LiczbaKursow, kurs.Kwota);
-            lstKursy.Items.Add($"Data: {kurs.Data.ToShortDateString()}, Opis: {kurs.Opis}, Liczba kursów: {kurs.LiczbaKursow}, Kwota: {kurs.Kwota} zł");
+            // Wyświetl komunikat potwierdzający
+            MessageBox.Show("Kurs został dodany.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void SalaryForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void lstKursy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Dane zostały zapisane przed zamknięciem aplikacji.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Opcjonalna logika po wybraniu kursu z listy
         }
     }
 }

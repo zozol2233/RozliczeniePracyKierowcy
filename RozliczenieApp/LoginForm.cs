@@ -33,8 +33,8 @@ namespace RozliczenieApp
                 // dane użytkownika z bazy
                 Uzytkownik uzytkownik = dbHelper.GetUserByUsername(username);
 
-                DriverForm driverForm = new DriverForm(uzytkownik);
-                driverForm.Show();
+                SalaryForm salaryForm = new SalaryForm(uzytkownik);
+                salaryForm.Show();
                 this.Close();
             }
             else

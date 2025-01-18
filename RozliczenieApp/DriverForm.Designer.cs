@@ -37,27 +37,26 @@
             // 
             // txtLicensePlate
             // 
-            this.txtLicensePlate.Location = new System.Drawing.Point(296, 72);
-            this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLicensePlate.Location = new System.Drawing.Point(263, 58);
             this.txtLicensePlate.Name = "txtLicensePlate";
-            this.txtLicensePlate.Size = new System.Drawing.Size(193, 26);
+            this.txtLicensePlate.Size = new System.Drawing.Size(172, 22);
             this.txtLicensePlate.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 72);
+            this.label1.Location = new System.Drawing.Point(51, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 20);
+            this.label1.Size = new System.Drawing.Size(163, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Wpisz numer rejestracyjny";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 136);
+            this.label2.Location = new System.Drawing.Point(51, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 20);
+            this.label2.Size = new System.Drawing.Size(123, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Wybierz samochód";
             // 
@@ -71,18 +70,17 @@
             "RENAULT",
             "SCANIA",
             "VOLVO"});
-            this.cmbCarType.Location = new System.Drawing.Point(296, 136);
-            this.cmbCarType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbCarType.Location = new System.Drawing.Point(263, 109);
             this.cmbCarType.Name = "cmbCarType";
-            this.cmbCarType.Size = new System.Drawing.Size(136, 28);
+            this.cmbCarType.Size = new System.Drawing.Size(121, 24);
             this.cmbCarType.TabIndex = 4;
+         
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(372, 276);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Location = new System.Drawing.Point(331, 221);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(117, 48);
+            this.btnSave.Size = new System.Drawing.Size(104, 38);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Zapisz";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -90,18 +88,16 @@
             // 
             // DriverForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbCarType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLicensePlate);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DriverForm";
             this.Text = "DriverForm";
-            this.Load += new System.EventHandler(this.DriverForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

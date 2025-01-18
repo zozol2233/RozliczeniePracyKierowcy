@@ -21,9 +21,10 @@ namespace RozliczenieApp
 
         private void btnCreateAcc_Click(object sender, EventArgs e)
         {
-            RegisterForm registerform = new RegisterForm();
-            registerform.Show();
-          
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.Show();
+            
+
         }
 
         

@@ -1,4 +1,5 @@
 ﻿using RozliczenieApp.Data;
+using RozliczenieApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,27 +28,32 @@ namespace RozliczenieApp
             string password = txtPassword.Text;
 
             if (string.IsNullOrWhiteSpace(firstname) || string.IsNullOrWhiteSpace(lastname) ||
-           string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Wszystkie pola muszą być wypełnione!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             var dbHelper = new DatabaseHelper();
             try
             {
                 dbHelper.AddUser(firstname, lastname, username, password);
                 MessageBox.Show("Rejestracja zakończona sukcesem!");
+
+                // Przekazanie nowo zarejestrowanego użytkownika do DriverForm
+                Uzytkownik uzytkownik = new Uzytkownik(firstname, lastname, username, password);
+                DriverForm driverForm = new DriverForm(uzytkownik);
+                driverForm.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Błąd: {ex.Message}");
-            }
-            {
-                LoginForm loginForm = new LoginForm();
-                loginForm.Show();
-                this.Close(); 
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
+        
 
         private void btnPomin_Click(object sender, EventArgs e)
         {
