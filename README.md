@@ -43,9 +43,12 @@ https://github.com/zozol2233/RozliczeniePracyKierowcy
 Przejdź do zakładki "Releases"
 
 Krok 2: 
-W sekcji release pobierz plik RozliczenieApp.exe
+W sekcji release pobierz plik RozliczenieApp.zip
 
 Krok 3:
+Rozpakuj folder
+
+Krok 4:
 Uruchom aplikację
 
 Użyte technologie:
